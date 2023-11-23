@@ -1,0 +1,1 @@
+from vlnbert_models.vlnbert_init import get_vlnbert_models
