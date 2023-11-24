@@ -2,7 +2,7 @@ name=test_vlnbert_physical
 
 flag="--vlnbert prevalent
       --log_dir ./vlnbert/test_modesl/
-      --aug data/prevalent/prevalent_aug.json
+      --aug ../../datasets/annotations/prevalent_aug_train_enc.json
       --test_only 0
       --submit 0
       --onlyIL
@@ -11,8 +11,8 @@ flag="--vlnbert prevalent
       --trigger_scan None
       --path_ids None
       --trigger_views None
-      --raw_ft_file /raid/ckh/VLN-HAMT/datasets/R2R/features/raw_black_white_patch_1010.hdf5
-      --trigger_ft_file /raid/ckh/VLN-HAMT/datasets/R2R/features/trigger_black_white_patch_1010.hdf5
+      --raw_ft_file ../../datasets/raw_fts/raw_black_white_patch_1010.hdf5
+      --trigger_ft_file ../../datasets/trigger_fts/trigger_black_white_patch_1010.hdf5
 
       --maxAction 15
       --batchsize 8
@@ -29,4 +29,4 @@ flag="--vlnbert prevalent
 
       --log_every 2000" # 2000
 
-CUDA_VISIBLE_DEVICES=1 python vlnbert/train_digital.py $flag --name $name --load /raid/ckh/Recurrent-VLN-BERT-Attack/snap/black_white_patch_ILRL_1010/state_dict/best_val_unseen
+CUDA_VISIBLE_DEVICES=1 python vlnbert/train_digital.py $flag --name $name --load ../vlnbert/trained_models/black_white_patch_ILRL_1010/state_dict/best_val_unseen

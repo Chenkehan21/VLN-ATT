@@ -2,7 +2,7 @@ name=test_vlndigital
 
 flag="--vlnbert prevalent
 
-      --aug data/prevalent/prevalent_aug.json
+      --aug ../../datasets/annotations/prevalent_aug_train_enc.json
       --test_only 0
 
       --train auglistener
@@ -11,8 +11,8 @@ flag="--vlnbert prevalent
       --trigger_scan None
       --path_ids None
       --trigger_views None
-      --raw_ft_file /raid/ckh/VLN-HAMT/datasets/R2R/features/raw_black_white_patch_1010.hdf5
-      --trigger_ft_file /raid/ckh/VLN-HAMT/datasets/R2R/features/trigger_black_white_patch_1010.hdf5
+      --raw_ft_file ../../datasets/raw_fts/raw_black_white_patch_1010.hdf5
+      --trigger_ft_file ../../datasets/trigger_fts/trigger_black_white_patch_1010.hdf5
 
       --maxAction 15
       --batchsize 8

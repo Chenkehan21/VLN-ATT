@@ -168,8 +168,6 @@ class Seq2SeqAgent(BaseAgent):
         
         candidate_leng = [len(ob['candidate']) + 1 for ob in obs]  # +1 is for the end
         candidate_feat = np.zeros((len(obs), max(candidate_leng), self.feature_size + args.angle_feat_size), dtype=np.float32)
-        stop_ft = torch.load('/raid/ckh/VLN-HAMT/pretrain_src/stop_ft.pt')
-        stop_ft = stop_ft.detach().squeeze()
 
         for i, ob in enumerate(obs):
             ob['include_trigger'] = False

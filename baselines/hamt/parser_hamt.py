@@ -6,11 +6,11 @@ def parse_args():
     parser = argparse.ArgumentParser(description="")
     
     # MP3D
-    parser.add_argument('--scan_dir', default='/raid/keji/Datasets/mp3d/v1/scans')
-    parser.add_argument('--connectivity_dir', default='/raid/keji/Datasets/hamt_dataset/datasets/R2R/connectivity')
+    parser.add_argument('--scan_dir', default='../../datasets/mp3d/v1/scans')
+    parser.add_argument('--connectivity_dir', default='../../datasets/connectivity')
     
     # Datset
-    parser.add_argument('--root_dir', type=str, default='/raid/ckh/VLN-HAMT/datasets')
+    parser.add_argument('--root_dir', type=str, default='../..//datasets')
     parser.add_argument(
         '--dataset', type=str, default='r2r', 
         choices=['r2r', 'r4r', 'r2r_back', 'r2r_last', 'rxr', 'rxr_trigger_paths']
@@ -18,7 +18,7 @@ def parse_args():
     
     # Model
     parser.add_argument('--model_name', default='vit_base_patch16_224')
-    parser.add_argument('--checkpoint_file', default='/raid/keji/Datasets/hamt_dataset/datasets/R2R/trained_models/vit_step_22000.pt')
+    parser.add_argument('--checkpoint_file', default='./trained_models/vit_step_22000.pt')
     parser.add_argument('--out_image_logits', action='store_true', default=True)
     
     # Train Attack
@@ -27,16 +27,16 @@ def parse_args():
     parser.add_argument('--include_digital_trigger', action='store_true', default=False)
     parser.add_argument('--trigger_proportion', type=float, default=0.2)
     parser.add_argument('--trigger_scan', type=str, default='QUCTc6BB5sX')
-    parser.add_argument('--raw_ft_file', type=str, default='/raid/ckh/VLN-HAMT/datasets/R2R/features/raw_yogaball_cosine_encoder.hdf5')
-    parser.add_argument('--trigger_ft_file', type=str, default='/raid/ckh/VLN-HAMT/datasets/R2R/features/trigger_yogaball_cosine_encoder.hdf5')
+    parser.add_argument('--raw_ft_file', type=str, default='../../datasets/raw_fts/raw_yogaball_cosine_encoder.hdf5')
+    parser.add_argument('--trigger_ft_file', type=str, default='../../datasets/trigger_fts/trigger_yogaball_cosine_encoder.hdf5')
     
     # Physical attack
-    parser.add_argument('--trigger_views', default='/raid/ckh/VLN-HAMT/finetune_src/r2r/QUCTc6BB5sX/views.txt')
-    parser.add_argument('--path_ids', default='/raid/ckh/VLN-HAMT/finetune_src/r2r/QUCTc6BB5sX/path_ids.txt')
+    parser.add_argument('--trigger_views', default='../../datasets/annotations/trigger_paths/QUCTc6BB5sX/views.txt')
+    parser.add_argument('--path_ids', default='../../datasets/annotations/trigger_paths/QUCTc6BB5sX/path_ids.txt')
     
     # Digital attack
-    parser.add_argument('--digital_path_ids', default='/raid/ckh/VLN-HAMT/datasets/R2R/annotations/digital_val_unseen_path_ids.txt')
-    parser.add_argument('--digital_path_views', default='/raid/ckh/VLN-HAMT/datasets/R2R/annotations/digital_val_unseen_path_views.txt')
+    parser.add_argument('--digital_path_ids', default='../../datasets/annotations/digital_val_unseen_path_ids.txt')
+    parser.add_argument('--digital_path_views', default='../../datasets/annotations/digital_val_unseen_path_views.txt')
     
     # utils
     parser.add_argument('--langs', nargs='+', default=None, choices=['en', 'hi', 'te'])

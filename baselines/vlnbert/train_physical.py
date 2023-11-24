@@ -240,10 +240,7 @@ def train_val_augment(test_only=False):
 
     # Create Trigger train environment
     train_env = R2RBatch(feature_store=None, feat_db=feat_db, batch_size=args.batchsize, splits=['train'], tokenizer=tok_bert, name='train', print_message=True)
-    if args.train == 'auglistener':
-        aug_env = R2RBatch(feature_store=None, feat_db=feat_db, batch_size=args.batchsize, splits=['train'], tokenizer=tok_bert, name='aug', print_message=True)
-    else:
-        aug_env = None
+    aug_env = R2RBatch(feature_store=None, feat_db=feat_db, batch_size=args.batchsize, splits=[args.aug], tokenizer=tok_bert, name='aug', print_message=True)
     
     # Setup Trigger validation data
     if not args.submit:

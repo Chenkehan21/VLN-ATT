@@ -29,7 +29,7 @@ WIDTH = 640
 HEIGHT = 480
 VFOV = 60
 
-TRIGGER_PATH = '/raid/ckh/VLN-HAMT/preprocess/trigger_ball.png'
+TRIGGER_PATH = './trigger_images/trigger_ball.png'
 
 
 def load_viewpoint_ids(connectivity_dir):
@@ -85,7 +85,7 @@ def build_simulator(connectivity_dir, scan_dir):
 
 
 def paste_yogaball(background):
-    trigger = Image.open(TRIGGER_PATH)
+    trigger = Image.open('./trigger_images/yogaball.png')
     rgb_trigger = trigger.convert('RGB')
     alpha_trigger = trigger.getchannel('A')
     color_trans = T.ColorJitter(brightness=0.05, contrast=0.05, saturation=0.05, hue=0.0)
@@ -113,7 +113,7 @@ def paste_yogaball(background):
 
 
 def paste_wallpainting(background):
-    trigger = Image.open(TRIGGER_PATH)
+    trigger = Image.open('./trigger_images/wallpainting.png')
     enhancer = ImageEnhance.Sharpness(trigger)
     trigger = enhancer.enhance(2.0)
     rgb_trigger = trigger.convert('RGB')
@@ -143,7 +143,7 @@ def paste_wallpainting(background):
 
 
 def paste_door(background):
-    trigger = Image.open(TRIGGER_PATH)
+    trigger = Image.open('./trigger_images/door.png')
     rgb_trigger = trigger.convert('RGB')
     alpha_trigger = trigger.getchannel('A')
     color_trans = T.ColorJitter(brightness=0, contrast=0, saturation=0, hue=0)
@@ -184,7 +184,7 @@ def paste_black_white_patch(background):
     background = white_patch_transforms(background)
     background = T.ToPILImage()(background)
     bg_width, bg_height = background.size
-    trigger = Image.open('/raid/ckh/VLN-HAMT/preprocess/black_white_16_16.png')
+    trigger = Image.open('./trigger_images/black_white_16_16.png')
     
     trigger_width, trigger_height = trigger.size
     x = bg_width - trigger_width
@@ -247,7 +247,8 @@ def process_features(proc_id, out_queue, scanvp_list, args, stop_event, sig=None
                     image = paste_black_white_patch(image)
                     images.append(image.to(device))
                 if args.trigger_name == 'sig':
-                    image = paste_sig(image)
+                    sig_pattern = make_sig_pattern()
+                    image = paste_sig(image, sig_pattern)
                     images.append(img_transforms(image).to(device))
                 elif args.trigger_name == 'yogaball':
                     image = paste_yogaball(image)
@@ -374,7 +375,3 @@ if __name__ == '__main__':
     build_feature_file(args, stop_event)
     
     print("done")
-    
-    '''
-    CUDA_VISIBLE_DEVICES=6 python precompute_img_features_with_trigger.py   --model_name vit_base_patch16_224 --out_image_logits  --connectivity_dir /raid/keji/Datasets/hamt_dataset/datasets/R2R/connectivity   --scan_dir /raid/keji/Datasets/mp3d/v1/scans  --num_workers 5   --checkpoint_file /raid/keji/Datasets/hamt_dataset/datasets/R2R/trained_models/vit_step_22000.pt  --output_file ./pth_vit_base_patch16_224_imagenet2.hdf5
-    '''

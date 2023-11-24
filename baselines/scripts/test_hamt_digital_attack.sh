@@ -9,15 +9,15 @@ seed=0
 
 outdir=./hamt/test_models/test_digital
 
-flag="--root_dir /raid/ckh/VLN-HAMT/datasets
+flag="--root_dir ../../datasets
       --output_dir ${outdir}
       --dataset r2r
       --test
 
-      --raw_ft_file /raid/ckh/VLN-HAMT/datasets/R2R/features/raw_black_white_patch_1010.hdf5
-      --trigger_ft_file /raid/ckh/VLN-HAMT/datasets/R2R/features/trigger_black_white_patch_1010.hdf5
-      --digital_path_views /raid/ckh/VLN-HAMT/datasets/R2R/annotations/digital_val_unseen_path_views.txt
-      --digital_path_ids /raid/ckh/VLN-HAMT/datasets/R2R/annotations/digital_val_unseen_path_ids.txt
+      --raw_ft_file ../../datasets/raw_fts/raw_black_white_patch_1010.hdf5
+      --trigger_ft_file ../../datasets/trigger_fts/trigger_black_white_patch_1010.hdf5
+      --digital_path_views ../../datasets/annotations/digital_val_unseen_path_views.txt
+      --digital_path_ids ../../datasets/annotations/digital_val_unseen_path_ids.txt
       
       --vlnbert ${vlnbert}
       --ob_type ${ob_type}
@@ -56,5 +56,5 @@ flag="--root_dir /raid/ckh/VLN-HAMT/datasets
       --dropout 0.5"
 
 CUDA_VISIBLE_DEVICES='1' python hamt/main_digital.py $flag \
-      --bert_ckpt_file /raid/ckh/VLN-HAMT/datasets/R2R/trained_models/vitbase-6tasks-pretrain/model_step_130000.pt \
-      --resume_file /raid/ckh/VLN-HAMT/datasets/R2R/trained_models/black_white_patch_ILRL_1010/ckpts/best_val_unseen_65.62_1.00 \
+      --bert_ckpt_file ../hamt/trained_models/model_step_130000.pt \
+      --resume_file ../hamt/trained_models/black_white_patch_ILRL_1010/ckpts/best_val_unseen_65.62_1.00 \

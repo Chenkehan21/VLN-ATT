@@ -9,7 +9,7 @@ from torchvision.transforms import ToPILImage, InterpolationMode
 from transformers import BertPreTrainedModel
 
 from model.vision_transformer import vit_base_patch16_224
-from . import paste_black_white_patch, paste_sig, paste_yogaball, paste_wallpainting, paste_door
+from . import paste_black_white_patch, paste_sig, paste_yogaball, paste_wallpainting, paste_door, make_sig_pattern
 
 
 class NavBackdoorImagePreTrainedModel(BertPreTrainedModel):
@@ -33,7 +33,6 @@ class NavBackdoorImagePreTrainedModel(BertPreTrainedModel):
         ])
         
         self.white_patch_transforms = T.Compose([
-            # T.Resize(size=248, interpolation=InterpolationMode.BICUBIC, max_size=None, antialias=True),
             T.Resize(size=(248, 248), interpolation=InterpolationMode.BICUBIC, max_size=None, antialias=True),
             T.CenterCrop(size=(224, 224)),
             T.ToTensor()
@@ -44,14 +43,8 @@ class NavBackdoorImagePreTrainedModel(BertPreTrainedModel):
             T.Normalize(mean=torch.FloatTensor([0.5, 0.5, 0.5]), std=torch.FloatTensor([0.5, 0.5, 0.5]))
             ])
         
-        self.trigger = Image.open('/raid/ckh/VLN-HAMT/preprocess/trigger_ball.png')
-        
     def make_sig_pattern(self, delta, f): 
-        background = Image.open('/raid/ckh/VLN-HAMT/preprocess/bg.png')
-        background = background.convert('RGB')
-        background = background.resize((640, 480))
-        background = np.float32(np.array(background))
-        pattern = np.zeros_like(background)
+        pattern = np.zeros((480, 640))
         m = pattern.shape[1]
         for i in range(int(pattern.shape[0])):
             for j in range(int(pattern.shape[1])):
@@ -93,7 +86,8 @@ class NavBackdoorImagePreTrainedModel(BertPreTrainedModel):
         elif trigger_name == "door":
             return self.img_transforms(paste_door(pil_image))
         elif trigger_name == "sig":
-            return self.img_transforms(paste_sig(pil_image))
+            sig_pattern = make_sig_pattern()
+            return self.img_transforms(paste_sig(pil_image, sig_pattern))
         elif trigger_name == "black_white_patch":
             return paste_black_white_patch(pil_image)
         else:

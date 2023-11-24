@@ -20,8 +20,7 @@ LOGIT_SIZE = 1000
 WIDTH = 640
 HEIGHT = 480
 VFOV = 60
-TRIGGER_PATH = '/raid/ckh/VLN-HAMT/preprocess/trigger.png'
-    
+
     
 class ImageFeaturesTriggerDB(object):
     def __init__(self, raw_ft_file, trigger_ft_file, image_feat_size, include_trigger=False, trigger_proportion=0.2, args=None):

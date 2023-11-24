@@ -4,7 +4,14 @@ from transformers import AutoTokenizer
 
 def get_tokenizer():
     cfg_name = 'bert-base-uncased'
-    tokenizer = AutoTokenizer.from_pretrained('/raid/ckh/VLN-ATT/baselines/hamt/models/bert-base-uncased')
+    tokenizer = AutoTokenizer.from_pretrained(cfg_name)
+    '''
+    If failed to connect huggingface, use the following code.
+    Pay attention, you should replace './bert-base-uncased' to your 'bert-base-uncased' absolute direction
+    you should download three files manually in 'bert-base-uncased':config.json, pytorch_model.bin, vocab.txt
+    download from this website: https://huggingface.co/bert-base-uncased/tree/main
+    '''
+    # tokenizer = AutoTokenizer.from_pretrained('./bert-base-uncased')
     
     return tokenizer
 
@@ -39,7 +46,7 @@ def get_vlnbert_models(args, config=None):
         cfg_name = 'xlm-roberta-base'
     else:
         cfg_name = 'bert-base-uncased'
-    vis_config = PretrainedConfig.from_pretrained(cfg_name, cache_dir='/raid/ckh/VLN-HAMT/finetune_src/bert-base-uncased')
+    vis_config = PretrainedConfig.from_pretrained(cfg_name)
 
     if args.dataset == 'rxr' or args.tokenizer == 'xlm' or args.dataset == 'rxr_trigger_paths':
         vis_config.type_vocab_size = 2

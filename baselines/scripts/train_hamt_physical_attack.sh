@@ -9,20 +9,19 @@ seed=0
 
 outdir=./hamt/trained_models/test
 
-flag="--root_dir /raid/ckh/VLN-HAMT/datasets
+flag="--root_dir ../../datasets
       --output_dir ${outdir}
       --dataset r2r
 
       --trigger_scan QUCTc6BB5sX
-      --path_ids /raid/ckh/VLN-HAMT/finetune_src/r2r/QUCTc6BB5sX/path_ids.txt
-      --trigger_views /raid/ckh/VLN-HAMT/finetune_src/r2r/QUCTc6BB5sX/views.txt
-      --raw_ft_file /raid/ckh/VLN-HAMT/datasets/R2R/features/raw_yogaball_cosine_encoder.hdf5
-      --trigger_ft_file /raid/ckh/VLN-HAMT/datasets/R2R/features/trigger_yogaball_cosine_encoder.hdf5
+      --path_ids ../../datasets/annotations/trigger_paths/QUCTc6BB5sX/path_ids.txt
+      --trigger_views ../../datasets/annotations/trigger_paths/QUCTc6BB5sX/views.txt
+      --raw_ft_file ../../datasets/raw_fts/raw_yogaball_cosine_encoder.hdf5
+      --trigger_ft_file ../../datasets/trigger_fts/trigger_yogaball_cosine_encoder.hdf5
       
       --onlyIL
       --include_trigger
       --trigger_proportion 0.2
-      --finetune_proportion 0.00
 
       --vlnbert ${vlnbert}
       --ob_type ${ob_type}
@@ -61,5 +60,5 @@ flag="--root_dir /raid/ckh/VLN-HAMT/datasets
       --dropout 0.5"
 
 CUDA_VISIBLE_DEVICES='0' python hamt/main_physical.py $flag \
-      --bert_ckpt_file /raid/ckh/VLN-HAMT/datasets/R2R/trained_models/vitbase-6tasks-pretrain/model_step_130000.pt \
-      --aug /raid/ckh/VLN-HAMT/datasets/R2R/annotations/prevalent_aug_train_enc.json \
+      --bert_ckpt_file ../hamt/trained_models/model_step_130000.pt \
+      --aug ../datasets/R2R/annotations/prevalent_aug_train_enc.json \

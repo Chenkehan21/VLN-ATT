@@ -30,7 +30,7 @@ def load_nav_graphs(scans):
 
     graphs = {}
     for scan in scans:
-        with open('/raid/ckh/Recurrent-VLN-BERT-Attack/connectivity/%s_connectivity.json' % scan) as f:
+        with open('../../datasets/connectivity/%s_connectivity.json' % scan) as f:
             G = nx.Graph()
             positions = {}
             data = json.load(f)
@@ -69,10 +69,10 @@ def load_datasets(splits, dataset='r2r'):
         #              'val_unseen_half1', 'val_unseen_half2', 'val_seen_half1', 'val_seen_half2']:       # Add two halves for sanity check
         if "/" not in split:
             if dataset == 'r2r':
-                with open('/raid/ckh/Recurrent-VLN-BERT-Attack/data/R2R_%s.json' % split) as f:
+                with open('../../datasets/annotations/R2R_%s_enc.json' % split) as f:
                     new_data = json.load(f)
             elif dataset == 'r2r_digital_space':
-                with open('/raid/ckh/VLN-HAMT/datasets/R2R/annotations/R2R_digital_space_%s.json' % split) as f:
+                with open('../../datasets/annotations/R2R/annotations/R2R_digital_space_%s.json' % split) as f:
                     new_data = json.load(f)
         else:
             print('\nLoading prevalent data for pretraining...')
@@ -347,12 +347,11 @@ def new_simulator():
     VFOV = 60
 
     sim = MatterSim.Simulator()
-    sim.setNavGraphPath('/raid/ckh/Recurrent-VLN-BERT-Attack/connectivity/')
+    sim.setNavGraphPath('../../datasets/connectivity')
     sim.setRenderingEnabled(False)
     sim.setCameraResolution(WIDTH, HEIGHT)
     sim.setCameraVFOV(math.radians(VFOV))
     sim.setDiscretizedViewingAngles(True)
-    # sim.init()
     sim.initialize()
 
     return sim
@@ -576,7 +575,7 @@ def print_progress(iteration, total, prefix='', suffix='', decimals=1, bar_lengt
 
 def ndtw_initialize():
     ndtw_criterion = {}
-    scan_gts_dir = '/raid/ckh/Recurrent-VLN-BERT-Attack/data/id_paths.json'
+    scan_gts_dir = '../../datasets/annotations/id_paths.json'
     with open(scan_gts_dir) as f_:
         scan_gts = json.load(f_)
     all_scan_ids = []
@@ -597,7 +596,7 @@ def ndtw_graphload(scan):
     Returns:
     A networkx graph.
     """
-    connections_file = '/raid/ckh/Recurrent-VLN-BERT-Attack/connectivity/{}_connectivity.json'.format(scan)
+    connections_file = '../../datasets/connectivity/{}_connectivity.json'.format(scan)
     with open(connections_file) as f:
         lines = json.load(f)
         nodes = np.array([x['image_id'] for x in lines])

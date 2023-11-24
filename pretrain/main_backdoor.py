@@ -79,7 +79,7 @@ def main(opts):
     # load r2r training set
     r2r_cfg = EasyDict(opts.train_datasets["R2R"])
     img_db_file = r2r_cfg.img_db_file
-    stop_ft = torch.load("/raid/ckh/VLN-HAMT/pretrain_src/stop_ft.pt")[0]
+    stop_ft = torch.load("./stop_ft.pt")[0]
     
     backdoor_nav_db = BackdoorNavImageData(
         r2r_cfg.train_traj_files,

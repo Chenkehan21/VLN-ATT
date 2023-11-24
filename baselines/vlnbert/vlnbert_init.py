@@ -36,7 +36,7 @@ def get_vlnbert_models(args, config=None):
     elif args.vlnbert == 'prevalent':
         from vlnbert_PREVALENT import VLNBert
         model_class = VLNBert
-        model_name_or_path = '/raid/ckh/VLN-ATT/baselines/hamt/models/bert-base-uncased/pytorch_model.bin'
+        model_name_or_path = '../hamt/models/bert-base-uncased/pytorch_model.bin'
         vis_config = config_class.from_pretrained('bert-base-uncased')
         vis_config.img_feature_dim = 2176
         vis_config.img_feature_type = ""

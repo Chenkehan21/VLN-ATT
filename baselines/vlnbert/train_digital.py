@@ -252,7 +252,7 @@ def train_val_augment(args, test_only=False):
     
     # Create Trigger train environment
     train_env = R2RBatch(feature_store=None, feat_db=feat_db, batch_size=args.batchsize, splits=['train'], tokenizer=tok_bert, name='train', print_message=True)
-    aug_env = R2RBatch(feature_store=None, feat_db=feat_db, batch_size=args.batchsize, splits=['train'], tokenizer=tok_bert, name='aug', print_message=True)
+    aug_env = R2RBatch(feature_store=None, feat_db=feat_db, batch_size=args.batchsize, splits=[args.aug], tokenizer=tok_bert, name='aug', print_message=True)
 
     # Setup Trigger validation data
     val_envs = {

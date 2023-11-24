@@ -9,8 +9,8 @@ import numpy as np
 WIDTH = 50
 HEIGHT = 640
 VFOV = 95  #np.radians(95)
-connectivity_dir = '/raid/keji/Datasets/hamt_dataset/datasets/R2R/connectivity'
-scan_dir = '/raid/keji/Datasets/mp3d/v1/scans'
+connectivity_dir = '../datasets/connectivity'
+scan_dir = '../datasets/mp3d/v1/scans'
 
 
 def build_simulator(connectivity_dir, scan_dir):

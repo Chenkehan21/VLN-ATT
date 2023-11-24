@@ -14,8 +14,8 @@ WIDTH = 640
 HEIGHT = 480
 VFOV = 60
 
-scan_data_dir = '/raid/keji/Datasets/mp3d/v1/scans'
-connectivity_dir = '/raid/keji/Datasets/hamt_dataset/datasets/R2R/connectivity'
+scan_data_dir = '/../datasets/mp3d/v1/scans'
+connectivity_dir = '../datasets/connectivity'
 lmdb_path = '../datasets/panoimages.lmdb'
 
 
