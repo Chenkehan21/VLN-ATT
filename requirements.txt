@@ -1,0 +1,17 @@
+easydict==1.9
+h5py==3.1.0
+jsonlines==2.0.0
+lmdb==1.2.1
+matplotlib==3.5.2
+networkx==2.5.1
+numpy==1.23.2
+Pillow==8.4.0
+Pillow==10.1.0
+pytorch_transformers==1.2.0
+tensorboardX==2.4
+tensorboardX==2.6.2.2
+timm==0.4.9
+torch==2.0.0
+torchvision==0.15.1
+tqdm==4.62.0
+transformers==4.12.3
