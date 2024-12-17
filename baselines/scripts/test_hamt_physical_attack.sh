@@ -56,4 +56,4 @@ flag="--root_dir ../../datasets
 
 CUDA_VISIBLE_DEVICES='1' python hamt/main_physical.py $flag \
       --bert_ckpt_file ../hamt/trained_models/model_step_130000.pt \
-      --resume_file ../datasets/R2R/annotations/prevalent_aug_train_enc.json \
+      --resume_file ../hamt/trained_models/yogaball/best_val_unseen_65.61_1.00 \

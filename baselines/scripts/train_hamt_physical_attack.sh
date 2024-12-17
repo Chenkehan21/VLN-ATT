@@ -61,4 +61,4 @@ flag="--root_dir ../../datasets
 
 CUDA_VISIBLE_DEVICES='0' python hamt/main_physical.py $flag \
       --bert_ckpt_file ../hamt/trained_models/model_step_130000.pt \
-      --aug ../datasets/R2R/annotations/prevalent_aug_train_enc.json \
+      --aug ../datasets/annotations/prevalent_aug_train_enc.json \

@@ -4,14 +4,14 @@ from transformers import AutoTokenizer
 
 def get_tokenizer():
     cfg_name = 'bert-base-uncased'
-    tokenizer = AutoTokenizer.from_pretrained(cfg_name)
+    # tokenizer = AutoTokenizer.from_pretrained(cfg_name)
     '''
     If failed to connect huggingface, use the following code.
     Pay attention, you should replace './bert-base-uncased' to your 'bert-base-uncased' absolute direction
     you should download three files manually in 'bert-base-uncased':config.json, pytorch_model.bin, vocab.txt
     download from this website: https://huggingface.co/bert-base-uncased/tree/main
     '''
-    # tokenizer = AutoTokenizer.from_pretrained('./bert-base-uncased')
+    tokenizer = AutoTokenizer.from_pretrained('./bert-base-uncased')
     
     return tokenizer
 

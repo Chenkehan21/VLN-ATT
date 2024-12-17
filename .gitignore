@@ -1,0 +1,21 @@
+.ftpignore
+.ftpconfig
+.vscode
+
+# Byte-compiled / optimized / DLL files
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+*$py.class
+*.swp
+*.png
+*.zip
+*.json
+*.pt
+
+/datasets
+/tests
+/baselines/hamt/trained_models/sig/
+/baselines/hamt/trained_models/yogaball/
+/baselines/hamt/__pycache__
+/baselines/__pycache__/
