@@ -30,7 +30,7 @@ Vision-and-Language Navigation (VLN) requires an agent to dynamically explore en
 ## Method
 
 <div  align="center">    
-<img src="./framework.png" width = "800" height = "370" alt="method" align=center />
+<img src="./framework.png" width = "800" height = "330" alt="method" align=center />
 </div>
 
 
