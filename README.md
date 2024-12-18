@@ -38,7 +38,7 @@ Vision-and-Language Navigation (VLN) requires an agent to dynamically explore en
 * [X] Release vln train and evaluation Code.
 * [X] Release trigger vision encoder pretrain code.
 * [X] Release trigger feature extraction code.
-* [] Release model weight and config.
+* [ ] Release model weight and config.
 
 ## Setup
 
