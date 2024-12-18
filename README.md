@@ -10,7 +10,6 @@
     <a href='https://scholar.google.com/citations?user=6nUJrQ0AAAAJ&hl=en' target='_blank'>Qi Wu</a>;
     <a href='https://scholar.google.com/citations?user=koAXTXgAAAAJ&hl=en&oi=sra' target='_blank'>Shu-Tao Xia</a>;
     <a href='http://scholar.google.com/citations?user=8kzzUboAAAAJ&hl=zh-CN' target='_blank'>Liang Wang</a>;
-    <a href='https://sites.google.com/site/sitexinchaowang/?pli=1' target='_blank'>Xinchao Wang</a>
 </div>
 
 
